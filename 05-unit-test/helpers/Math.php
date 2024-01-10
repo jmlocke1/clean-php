@@ -52,4 +52,8 @@ class Math {
 		}
 		return $this->sum();
 	}
+
+	public function getRandom() {
+		return rand(5, 20);
+	}
 }
