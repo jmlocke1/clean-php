@@ -112,4 +112,11 @@ class MathTest extends TestCase {
 		// $this->markTestIncomplete("Esta prueba aún está incompleta");
 	}
 
+	public function testGeneraUnNumeroAleatorio() {
+		$mathMock = $this->getMockBuilder(Math::class)->setConstructorArgs([0, 0])->getMock();
+		$mathMock->expects($this->once())->method("getRandom")->willReturn(7cd );
+		$result = $mathMock->getRandom();
+		$this->assertEquals(7, $result);
+	}
+
 }
