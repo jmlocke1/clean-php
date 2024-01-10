@@ -43,4 +43,13 @@ class Math {
 		// echo "La {$word} obtenida de {$this->firstValue} {$op} {$this->secondValue} es igual a {$result}";
 		echo "La {$word} obtenida de {$this->firstValue} {$op} {$this->secondValue} es igual a {$result}";
 	}
+
+	public function pruebaLenta(){
+		$m= 0;
+		for($i=0; $i < 10000; $i++){
+			$m += $i*2;
+			$t = $i*$m;
+		}
+		return $this->sum();
+	}
 }

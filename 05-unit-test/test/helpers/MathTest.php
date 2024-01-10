@@ -86,4 +86,19 @@ class MathTest extends TestCase {
 		$this->expectOutputRegex($this->matchOp(15.3, 88.8, -73.5));
 	}
 
+	/**
+	 * Undocumented function
+	 *
+	 * @small
+	 */
+	public function testPruebaRiesgo() {
+		$math = new Math(5.5, 8.8);
+
+		// 2- Act = Actuar
+		$resultSum = $math->pruebaLenta();
+		
+		// 3- Assert = Comprobar
+		$this->assertEquals(14.3, $resultSum);
+	}
+
 }
