@@ -46,7 +46,7 @@ class Math {
 
 	public function pruebaLenta(){
 		$m= 0;
-		for($i=0; $i < 10000; $i++){
+		for($i=0; $i < 1000000000; $i++){
 			$m += $i*2;
 			$t = $i*$m;
 		}

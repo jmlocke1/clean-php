@@ -92,13 +92,24 @@ class MathTest extends TestCase {
 	 * @small
 	 */
 	public function testPruebaRiesgo() {
+		// Omitimos esta prueba
+		$this->markTestSkipped("Esta prueba está siendo omitida porque es lenta y no es necesario ejecutarla siempre");
 		$math = new Math(5.5, 8.8);
 
 		// 2- Act = Actuar
 		$resultSum = $math->pruebaLenta();
 		
 		// 3- Assert = Comprobar
-		$this->assertEquals(14.3, $resultSum);
+		$this->assertEquals(14.3, $resultSum);		
+	}
+
+	/**
+	 * @requires PHP <= 7
+	 */
+	public function testIncomplete(){
+		$math = new Math(15.3, 88.8);
+		$math->viewSum('+');
+		// $this->markTestIncomplete("Esta prueba aún está incompleta");
 	}
 
 }
