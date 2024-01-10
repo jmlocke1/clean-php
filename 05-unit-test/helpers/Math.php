@@ -29,4 +29,18 @@ class Math {
 		}
 		return $this->firstValue / $this->secondValue;
 	}
+
+	public function viewSum($op){
+		if($op === '+'){
+			$word = 'suma';
+			$result = $this->sum();
+		}else if($op === '-'){
+			$word = 'resta';
+			$result = $this->subtraction();
+		}else{
+			return;
+		}
+		// echo "La {$word} obtenida de {$this->firstValue} {$op} {$this->secondValue} es igual a {$result}";
+		echo "La {$word} obtenida de {$this->firstValue} {$op} {$this->secondValue} es igual a {$result}";
+	}
 }

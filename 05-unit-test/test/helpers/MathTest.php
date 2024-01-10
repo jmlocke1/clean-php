@@ -7,6 +7,15 @@ use Helpers\Math;
 use PHPUnit\Framework\TestCase;
 
 class MathTest extends TestCase {
+	public string $regex;
+	public function setUp(): void {
+		$num = "-?\d+(\.\d+)?";
+		$this->regex = $this->matchOp($num, $num, $num);
+	}
+
+	public function matchOp($num1, $num2, $result){
+		return "/^(La ((suma obtenida de {$num1} \+)|(resta obtenida de {$num1} \-)) {$num2} es igual a {$result})$/";
+	}
 	public function testSumaDeDosNumerosEnteros() {
 		// AAA Pattern - Patrón de las tres A
 
@@ -54,8 +63,27 @@ class MathTest extends TestCase {
 	public function testDivisionByZero(){
 		$math = new Math(5, 0);
 		$this->expectException(DivisionByZeroError::class);
-		$this->expectExceptionMessage(trad());
+		$this->expectExceptionMessage("No puedes dividir entre cero");
 		$result = $math->division();
 		
 	}
+
+	public function testVerifySumFormatted() {
+		$math = new Math(15.3, 88.8);
+		$math->viewSum('+');
+		$this->expectOutputRegex($this->regex);
+	}
+
+	public function testVerifySumExact(){
+		$math = new Math(15.3, 88.8);
+		$math->viewSum('+');
+		$this->expectOutputRegex($this->matchOp(15.3, 88.8, 104.1));
+	}
+
+	public function testVerifySubtractExact(){
+		$math = new Math(15.3, 88.8);
+		$math->viewSum('-');
+		$this->expectOutputRegex($this->matchOp(15.3, 88.8, -73.5));
+	}
+
 }
