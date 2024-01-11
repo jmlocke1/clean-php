@@ -114,7 +114,7 @@ class MathTest extends TestCase {
 
 	public function testGeneraUnNumeroAleatorio() {
 		$mathMock = $this->getMockBuilder(Math::class)->setConstructorArgs([0, 0])->getMock();
-		$mathMock->expects($this->once())->method("getRandom")->willReturn(7cd );
+		$mathMock->expects($this->once())->method("getRandom")->willReturn(7);
 		$result = $mathMock->getRandom();
 		$this->assertEquals(7, $result);
 	}
